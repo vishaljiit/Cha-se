@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+	<!-- .NET application configuration file
+	The .NET Compact Framework does not support application configuration files,
+	but log4net supports using configuration files with similar names and structure,
+	to store the log4net configuration.
+	-->
+
+	<!-- By default the FileAppender holds an exclusive write lock on the log file while it is 
+	logging. This prevents other processes from writing to the file. 
+	The FileAppender can be configured to use a different locking model, MinimalLock, 
+	that only acquires the write lock while a log is being written. 
+	This allows multiple processes to interleave writes to the same file, 
+	albeit with a loss in performance
+	-->
+
+
+	<!-- RollingFileAppender properties can be changed by adding the following attributes 
+	maximumFileSize specifies the maximum size that the output file is allowed to reach before being rolled over to 	
+	backup files. You can use suffixes "KB", "MB" or "GB" to denote kilobytes, megabytes or gigabytes. The default 		
+	maximum file size is 10MB. 
+
+	maxSizeRollBackups specifies the maximum number of backup files that are kept before the oldest is erased. The 		
+	maximum applies to each time-based group of files and not the total. If set to zero, then there will be no backup 	
+	files and the log file will be truncated when it reaches MaxFileSize. If set to a negative number, then the Client 	
+	will not delete any files, which could result in very slow performance as a large number of files are rolled over 	
+	unless CountDirection is used. 
+
+	CountDirection indicates if the current file is the lowest numbered file or the highest numbered file. By default, 	
+	newer files have lower numbers (CountDirection less than zero), that is, log.1 is most recent, log.5 is the 
+	5th backup, and so on. CountDirection of zero or greater does the opposite: log.1 is the first backup made, log.5 is 
+	the 5th backup made, and so on. For infinite backups use CountDirection greater than or equal to zero to reduce 
+	rollover costs. The default value is -1. 
+	-->
+
+
+<configuration>
+	<!-- This section contains the log4net configuration settings -->
+	<log4net>
+		<!-- Define some output appenders -->
+		<appender name="Engine" type="log4net.Appender.RollingFileAppender">
+			<file value="${PAYMENTECH_LOGDIR}\engine.log" />
+			<appendToFile value="true" />
+			<rollingStyle value="Size" />
+		 	<maxSizeRollBackups value="10" />
+   			<maximumFileSize value="10MB" />
+			<staticLogFileName value="true" />
+			<!-- Uncomment the following xml node/element  for multiprocess logging support --> 
+			<!-- <lockingModel type="log4net.Appender.FileAppender+MinimalLock" /> -->
+			<layout type="log4net.Layout.PatternLayout">
+				<conversionPattern value="%t %5p,%d,[%C:%L] - %m%n" />
+			</layout>
+		</appender>
+		<appender name="ECommerce" type="log4net.Appender.RollingFileAppender">
+			<file value="${PAYMENTECH_LOGDIR}\eCommerce.log" />
+			<appendToFile value="true" />
+			<rollingStyle value="Size" />
+			<staticLogFileName value="true" />
+			<maxSizeRollBackups value="10" />
+   			<maximumFileSize value="10MB" />			
+			<!-- Uncomment the following xml node/element  for multiprocess logging support --> 
+			<!-- <lockingModel type="log4net.Appender.FileAppender+MinimalLock" /> -->
+			<layout type="log4net.Layout.PatternLayout">
+				<conversionPattern value="%t %5p,%d,[%C:%L] - %m%n" />
+			</layout>
+		</appender>
+		<!-- Specify the level for some specific categories -->
+		<logger name="EngineLogger">
+			<level value="INFO" />
+			<appender-ref ref="Engine" />
+		</logger>
+		<logger name="ECommerceLogger">
+			<level value="INFO" />
+			<appender-ref ref="ECommerce" />
+		</logger>
+	</log4net>
+
+</configuration>

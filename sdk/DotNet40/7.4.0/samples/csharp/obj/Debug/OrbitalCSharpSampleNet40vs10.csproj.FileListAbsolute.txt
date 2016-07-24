@@ -1,0 +1,5 @@
+F:\Paymentech\sdk\DotNet40\7.4.0\samples\csharp\bin\Net40\Debug\OrbitalCSharpSample.exe
+F:\Paymentech\sdk\DotNet40\7.4.0\samples\csharp\bin\Net40\Debug\OrbitalCSharpSample.pdb
+F:\Paymentech\sdk\DotNet40\7.4.0\samples\csharp\obj\Debug\OrbitalCSharpSampleNet40vs10.csprojResolveAssemblyReference.cache
+F:\Paymentech\sdk\DotNet40\7.4.0\samples\csharp\obj\Debug\OrbitalCSharpSample.exe
+F:\Paymentech\sdk\DotNet40\7.4.0\samples\csharp\obj\Debug\OrbitalCSharpSample.pdb
