@@ -1,4 +1,4 @@
-//using System;
+using System;
 using Paymentech;
 
 /// Please note that this code is for documentation purposes only and is 
@@ -43,8 +43,8 @@ namespace ChasePaymentech.Orbital.Test.Samples
 				// Create an authorize transaction
 				Transaction transaction =  new Transaction(RequestType.NEW_ORDER_TRANSACTION);
 
-				// Populate the required fields for the given transaction type. You can use’
-				// the Paymentech Transaction Appendix to help you populate the transaction’
+				// Populate the required fields for the given transaction type. You can useâ€™
+				// the Paymentech Transaction Appendix to help you populate the transactionâ€™
 				transaction["IndustryType"] = "IV";
 				transaction["MessageType"] = "R";
 				transaction["TerminalID"] = "001";
